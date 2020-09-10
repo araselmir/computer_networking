@@ -146,4 +146,50 @@ There are 7 Layers of OSI Model.
 </p>The network layer, also called the internet layer, deals with packets and connects independent networks to transport the packets across network boundaries. The network layer protocols are the IP and the Internet Control Message Protocol (ICMP), which is used for error reporting.</p>
 <h3>4.Physical layer</h3>
 <p>The physical layer, also known as the network interface layer or data link layer, consists of protocols that operate only on a link -- the network component that interconnects nodes or hosts in the network. The protocols in this lowest layer include Ethernet for local area networks (LANs) and the Address Resolution Protocol (ARP).</p>
+# (C).Difference between IPV4 vs IPV6
+
+<h2>KEY DIFFERENCE</h2>
+<p>1. IPv4 is 32-Bit IP address whereas IPv6 is a 128-Bit IP address.</p>
+<p>2. IPv4 format is four Octect and IPv6 is 8 block Hexadecimal.</p>
+<p>3. IPv4 binary bits are separated by a dot(.) whereas IPv6 binary bits are separated by a colon(:).</p>
+<p>4. IPv4 is a numeric addressing method whereas IPv6 is an alphanumeric addressing method.</p>
+<p>5. IPv4 supports broadcast whereas IPv6 doesn’t support broadcast.</p>
+<p>6. IPv6 supports bigger payload than IPv4.</p>
+<p>7. IPv4 supports VLSM (Virtual Length Subnet Mask) whereas IPv6 doesn’t support VLSM.</p>
+
+# (D).DHCP (Dynamic Host Configuration Protocol)
+<h2>What is DHCP?</h2>
+<p>DHCP stands for dynamic host configuration protocol and is a network protocol used on IP networks where a DHCP server automatically assigns an IP address and other information to each host on the network so they can communicate efficiently with other endpoints.</p>
+<h2>How DHCP work ?</h2>
+
+![csg66-01-how-dhcp-works](https://user-images.githubusercontent.com/62602944/92783427-9316ae00-f3c7-11ea-9f1b-3d054bf9af28.png)
+
+<h3>1. DHCP discovery</h3>
+<p>When you start a device, the device checks whether a valid IP configuration is available on the device or not. If the valid IP configuration is not available, the device generates a special message known as <b>DHCPDISCOVER</b> and broadcasts this message on the local LAN segment.</p>
+<p>To broadcast <b>DHCPDISCOVER</b> messages, the device uses the 0.0.0.0 and 255.255.255.255 as the source address and destination address, respectively.</p>
+<p>The 0.0.0.0 and 255.255.255.255 are two special addresses. Any device, whether it has a valid IP configuration or not, can use these addresses to send local broadcast messages.</p>
+<p>From these addresses, the 0.0.0.0 is used as the source address. If a device does not have the source address, it can use this address to send broadcast messages. 255.255.255.255 is the local broadcast address. Any message sent on this address is received by all hosts of the local network.</p>
+<h3>DHCP offer</h3>
+<p>Since the client sends the <b>DHCPDISCOVER</b> message to the local broadcast address, if a DHCP server is configured on the local network, it will also receive the message. If multiple DHCP servers are configured on the local network, they all will receive the <b>DHCPDISCOVER</b> message.</p>
+<p>If multiple DHCP servers are available, based on their configuration, one of them or all of them can reply to the <b>DHCPDISCOVER</b> message. In reply to the <b>DHCPDISCOVER</b> message, a DHCP server sends a <b>DHCPOFFER</b> message to the client.</p>
+<p>Since the client does not have an IP address, the DHCP server cannot send the DHCPOFFER message directly to the client. Because of this, the server sets the destination address to 255.255.255.255. In other words, the server also broadcasts the DHCPOFFER message to the local network.</p>
+<p>The <b>DHCPOFFER</b> message includes the following important information: IP address of the client, subnet mask of the segment, IP address of the default gateway, DNS domain name, DNS server address or addresses, and TFTP server address or addresses.</p>
+<p><em>Apart from these, the <b>DHCPOFFER</b> message also contains other protocol-specific information such as the lease duration and client ID. This information is required by the core functions of DHCP.</em></p>
+
+<h3>DHCP request</h3>
+<p>All hosts in the local network receive the <b>DHCPOFFER</b> message. The host that sent the <b>DHCPDISCOVER</b> message accepts the <b>DHCPOFFER</b> message. Except the original host, all other hosts ignore the <b>DHCPOFFER</b>.</p>
+<p>The <b>DHCPDISCOVER</b> message contains the host's MAC address. When a DHCP server broadcasts a <b>DHCPOFFER</b> message, it also includes the host's MAC address in a parameter known as the client ID. When hosts receive the <b>DHCPOFFER</b> message, they check the client ID field in the message. If a host sees its MAC address in the client ID field, the host knows that the message is meant for it. If a host sees the MAC address of another host in the client ID field, the host knows that the message is not intended for it.</p>
+<p>Depending on the number of DHCP servers, a host may receive multiple <b>DHCPOFFER</b> messages. If a host receives multiple <b>DHCPOFFER</b> messages, it accepts only one message and tells the corresponding server with a <b>DHCPREQUEST</b> message that it wants to use the offered IP configuration.</p>
+<p>If only one DHCP server is available and the provided IP configuration conflicts with the client’s configuration, the client can respond with a <b>DHCPDECLINE</b> message. In this situation, the DHCP server offers another IP configuration.</p>
+<p>If only one DHCP server is available and the provided IP configuration conflicts with the client’s configuration, the client can respond with a <b>DHCPDECLINE</b> message. In this situation, the DHCP server offers another IP configuration.</p>
+<p>When DHCP servers receive the <b>DHCPREQUEST</b> message, besides the server whose offer has been accepted, all other servers withdraw any offers that they might have made to the client and return the offered address to the pool of available addresses.</p>
+<p>The DHCPREQUEST message contains a Transaction ID field. Just like hosts use the client ID field of the <b>DHCPOFFER</b> message to know whether the message is intended for them or not, DHCP servers use the Transaction ID field of the <b>DHCPREQUEST</b> message to know whether their offer has been accepted or not.</p>
+
+<h3>DHCP acknowledgment</h3>
+<p>When the DHCP server receives a <b>DHCPREQUEST</b> message from the client, the configuration process enters its final stage. In this stage, the server sends a DHCPACK message to the client.</p>
+<p>The <b>DHCPACK</b> message is an acknowledgment to the client indicating that the DHCP server has received the <b>DHCPREQUEST</b> message of the client, and the client can use the offered IP configuration.</p>
+<p>In some cases, the server may also respond with a <b>DHCPNACK</b> message. The <b>DHCPNACK</b> message tells the client that the offer is no longer valid and the client needs to request an IP configuration again. Typically, this occurs when the client takes too long to respond with a <b>DHCPREQUEST</b> message after receiving a <b>DHCOFFER</b> message from the server. In such a case, the client can make a new request for another IP configuration.</p>
+<p>The following image shows the above steps.</p>
+
+![csg66-02-four-functions-of-dhcp](https://user-images.githubusercontent.com/62602944/92786393-05888d80-f3ca-11ea-9a40-bf7192e76175.png)
 
