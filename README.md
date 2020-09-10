@@ -112,7 +112,7 @@ There are 7 Layers of OSI Model.
 
 ![Screenshot from 2020-09-10 16-34-00](https://user-images.githubusercontent.com/62602944/92719036-6db48080-f384-11ea-9fed-34d5361a7a9a.png)
 
-<h3>2. The Data Link Layer</p>
+<h3>2. The Data Link Layer</h3>
 <p>The data link layer is very similar to the network layer, except the data link layer facilitates data transfer between two devices on the SAME network. The data link layer takes packets from the network layer and breaks them into smaller pieces called frames. Like the network layer, the data link layer is also responsible for flow control and error control in intra-network communication (The transport layer only does flow control and error control for inter-network communications).</p>
 
 ![Screenshot from 2020-09-10 16-34-02](https://user-images.githubusercontent.com/62602944/92719060-72793480-f384-11ea-9232-7803e88a3e7b.png)
@@ -126,10 +126,10 @@ There are 7 Layers of OSI Model.
 # (B). TCP/IP(Transmission Control Protocol/Internet Protocol)
 <h2> What is TCP/IP ?</h2>
 <p>TCP/IP, or the Transmission Control Protocol/Internet Protocol, is a suite of communication protocols used to interconnect network devices on the internet. TCP/IP can also be used as a communications protocol in a private computer network (an intranet or an extranet).</p>
-<p>IP is a connectionless protocol, which means that each unit of data is individually addressed and routed from the source device to the target device, and the target does not send an acknowledgement back to the source. That’s where protocols such as the Transmission Control Protocol (TCP) come in. TCP is used in conjunction with IP in order to maintain a connection between the sender and the target and to ensure packet order.</p>
-<h2>Why called TCP/IP ?</p>
+<p>IP is a connectionless protocol, which means that each unit of data is individually addressed and routed from the source device to the target device, and the target does not send an acknowledgement back to the source. That’s where protocols such as the Transmission Control Protocol (TCP) come in. TCP is used in conjunction with IP in  to maintain a connection between the sender and the target and to ensure packet .</p>
+<h2>Why called TCP/IP ?</h2>
 <p>When the protocols were first implemented, there was no IP, only TCP, which then stood for Transmission Control Program. Jon Postel recognized in 1977 that a monolithic protocol was a bad design and the responsibilities of the original protocol were split into layers. The new implementation was called TCP/IP.</p>
-<h2>What does TCP/IP do, exactly? And how does it work?</p>
+<h2>What does TCP/IP do, exactly? And how does it work?</h2>
 <p>TCP/IP was developed by the U.S. Department of Defense to specify how computers transfer data from one device to another. TCP/IP puts a lot of emphasis on accuracy, and it has several steps to ensure that data is correctly transmitted between the two computers.</p>
 <p>Here’s one way it does that. If the system were to send the whole message in one piece, and if it were to encounter a problem, the whole message would have to be re-sent. Instead, TCP/IP breaks each message into packets, and those packets are then reassembled on the other end. In fact, each packet could take a different route to the other computer, if the first route is unavailable or congested.</p>
 <p>
@@ -139,7 +139,7 @@ There are 7 Layers of OSI Model.
 <h2>Layers of the TCP/IP model</h2>
 <p>There are 4 layers of the TCP/IP model</p>
 <h3>1. Application layer</h3>
-<p>The application layer provides applications with standardized data exchange. Its protocols include the HTTP, FTP, Post Office Protocol 3 (POP3), Simple Mail Transfer Protocol (SMTP) and Simple Network Management Protocol (SNMP). At the application layer, the payload is the actual application data.</p>
+<p>The application layer provides applications with standardized data exchange. Its protocols include the HTTP, FTP,  Protocol 3 (POP3), Simple Mail Transfer Protocol (SMTP) and Simple Network Management Protocol (SNMP). At the application layer, the payload is the actual application data.</p>
 <h3>2.Transport layer</h3>
 <p>The transport layer is responsible for maintaining end-to-end communications across the network. TCP handles communications between hosts and provides flow control, multiplexing and reliability. The transport protocols include TCP and User Datagram Protocol (UDP), which is sometimes used instead of TCP for special purposes.</p>
 <h3>3.Network layer</h3>
