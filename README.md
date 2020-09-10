@@ -146,6 +146,7 @@ There are 7 Layers of OSI Model.
 </p>The network layer, also called the internet layer, deals with packets and connects independent networks to transport the packets across network boundaries. The network layer protocols are the IP and the Internet Control Message Protocol (ICMP), which is used for error reporting.</p>
 <h3>4.Physical layer</h3>
 <p>The physical layer, also known as the network interface layer or data link layer, consists of protocols that operate only on a link -- the network component that interconnects nodes or hosts in the network. The protocols in this lowest layer include Ethernet for local area networks (LANs) and the Address Resolution Protocol (ARP).</p>
+
 # (C).Difference between IPV4 vs IPV6
 
 <h2>KEY DIFFERENCE</h2>
@@ -178,7 +179,7 @@ There are 7 Layers of OSI Model.
 
 <h3>DHCP request</h3>
 <p>All hosts in the local network receive the <b>DHCPOFFER</b> message. The host that sent the <b>DHCPDISCOVER</b> message accepts the <b>DHCPOFFER</b> message. Except the original host, all other hosts ignore the <b>DHCPOFFER</b>.</p>
-<p>The <b>DHCPDISCOVER</b> message contains the host's MAC address. When a DHCP server broadcasts a <b>DHCPOFFER</b> message, it also includes the host's MAC address in a parameter known as the client ID. When hosts receive the <b>DHCPOFFER</b> message, they check the client ID field in the message. If a host sees its MAC address in the client ID field, the host knows that the message is meant for it. If a host sees the MAC address of another host in the client ID field, the host knows that the message is not intended for it.</p>
+<p>The <b>DHCPDISCOVER</b> message contains the host's MAC address. When a DHCP server broadcasts a <b>DHCPOFFER</b> message, it also includes the host's MAC address in a parameter known as the client ID. When hosts receive the <b>DHCPOFFER</b> message, they  the client ID field in the message. If a host sees its MAC address in the client ID field, the host knows that the message is meant for it. If a host sees the MAC address of another host in the client ID field, the host knows that the message is not intended for it.</p>
 <p>Depending on the number of DHCP servers, a host may receive multiple <b>DHCPOFFER</b> messages. If a host receives multiple <b>DHCPOFFER</b> messages, it accepts only one message and tells the corresponding server with a <b>DHCPREQUEST</b> message that it wants to use the offered IP configuration.</p>
 <p>If only one DHCP server is available and the provided IP configuration conflicts with the client’s configuration, the client can respond with a <b>DHCPDECLINE</b> message. In this situation, the DHCP server offers another IP configuration.</p>
 <p>If only one DHCP server is available and the provided IP configuration conflicts with the client’s configuration, the client can respond with a <b>DHCPDECLINE</b> message. In this situation, the DHCP server offers another IP configuration.</p>
