@@ -194,3 +194,48 @@ There are 7 Layers of OSI Model.
 
 ![csg66-02-four-functions-of-dhcp](https://user-images.githubusercontent.com/62602944/92786393-05888d80-f3ca-11ea-9a40-bf7192e76175.png)
 
+# (E). Loopback Interface
+<h2>What is loopback interface ? </h2>
+<p>The loopback interface is a virtual interface that is always up and available after it has been configured. Note that the loopback interface is not tied to the address 127.0.0.1. It’s an interface like any other, and can be assigned its own address. A loopback interface is often used as a termination address for some routing protocols, because it never goes down.</p>
+<p>Another common use of a loopback address is to identify a router. For example, say you want to find out whether a particular router is up. You know that the router has an ethernet0 interface with an IP address of 10.10.1.1. You ping 10.10.1.1 and don’t get a response. Does this mean your router is down? It’s possible that the router is up and that the ping reached the router on another interface, but you didn’t receive a response because ethernet0 is down. To find out unambiguously whether the router is alive, you have to ping another interface. But that interface might be down, causing the same scenario to occur. To avoid this problem, you can configure the router’s loopback interface with a unique address. Then, when you want to telnet or ping your router, use the loopback interface’s IP address. This method ensures that you will get a response no matter how your packets reach the router.</p>
+<p>Here’s how to assign an IP address to a loopback interface:</p>
+<pre class="programlisting">interface loopback 0
+  ip address 10.10.1.2 255.255.255.255</pre>
+  
+  # (F). Latency
+  <h2>What is latency ?</h2>
+  <p>Latency is the time that passes between a user action and the resulting response. Network latency refers specifically to delays that take place within a network, or on the Internet. In practical terms, latency is the time between a user action and the response from the website or application to this action – for instance, the delay between when a user clicks a link to a webpage and when the browser displays that webpage.</p>
+  
+  ![Screenshot from 2020-09-11 09-04-55](https://user-images.githubusercontent.com/62602944/92850214-fc211480-f40d-11ea-8646-bbfa76a0df5b.png)
+
+<h2>Network latency effects on application performance</h2>
+<p>Providing the storage network with sufficient bandwidth is a necessary, but not sufficient, step to ensuring good performance of a storage networking application. If excessive network latency is causing the application to spend a large amount of time waiting for responses from a distant data center, then the bandwidth may not be fully utilized, and performance will suffer.</p>
+<p>Good network design can minimize node delay and congestion delay, but a law of physics governs propagation delay: the speed of light. Still, there are ways to seemingly violate this physical law and decrease the overall amount of time that applications spend waiting to receive responses from remote sites.</p>
+<p>The first is credit spoofing. As described previously, credit spoofing switches can convince Fibre Channel switches or end systems to forward chunks of data much larger than the amount that could be stored in their own buffers. The multiprotocol switches continue to issue credits until their own buffers are full, while the originating Fibre Channel devices suppose that the credits arrived from the remote site.</p>
+<p>Since the far-end switches also have large buffers, they can handle large amounts of data as it arrives across the network from the sending switch. As a result, fewer control messages need to be sent for each transaction and less time is spent waiting for the flow control credits to travel end to end across the high-latency network. That, in turn, increases the portion of time spent sending actual data and boosts the performance of the application.</p>
+<p>Another way to get around the performance limitations caused by network latency is to use parallel sessions or flows. Virtually all storage networks operate with multiple sessions, so the aggregate performance can be improved simply by sending more data while the applications are waiting for the responses from earlier write operations. Of course, this has no effect on the performance of each individual session, but it can improve the overall performance substantially.</p>
+
+# (G).CIDR (Classless Inter-Domain Routing)
+<h2>What is CIDR (Classless Inter-Domain Routing)?</p>
+<p>Classless Inter-Domain Routing (CIDR) is a standard created by the Internet Engineering Task Force in 1993 that helps to more efficiently allocate IP addresses and allows for a flexible and simplified way to identify IP addresses and route network traffic. </p>
+<h2>Background of CIDR</h2>
+<p>An IP address is interpreted as composed of two parts: a network-identifying prefix followed by a host identifier within that network. In the previous classful network architecture, IP address allocations were based on the bit boundaries of the four octets of an IP address. An address was considered to be the combination of an 8, 16, or 24-bit network prefix along with a 24, 16, or 8-bit host identifier respectively. Thus, the smallest allocation and routing block contained only 256 addresses—too small for most enterprises, and the next larger block contained 65536 addresses—too large to be used efficiently even by large organizations. This led to inefficiencies in address use as well as inefficiencies in routing, because it required a large number of allocated class-C networks with individual route announcements, being geographically dispersed with little opportunity for route aggregation.</p>
+<p>During the first decade of the Internet after the invention of the Domain Name System (DNS) it became apparent that the devised system based on the classful network scheme of allocating the IP address space and the routing of IP packets was not scalable. This led to the successive development of subnetting and CIDR. The network class distinctions were removed, and the new system was described as being classless, with respect to the old system, which became known as classful. In 1993, the Internet Engineering Task Force published a new set of standards to define this new concept of allocation of IP address blocks and new methods of routing IPv4 packets. An updated version of the specification was published as RFC 4632 in 2006.</p>
+<p>Classless Inter-Domain Routing is based on variable-length subnet masking (VLSM), which allows a network to be divided into variously sized subnets, providing the opportunity to size a network more appropriately for local needs. Variable-length subnet masks are mentioned .Accordingly, techniques for grouping addresses for common operations were based on the concept of cluster addressing, first proposed by Carl-Herbert Rokitansky.</p>
+
+<h2>How does CIDR work?</h2>
+<p>CIDR is based on variable-length subnet masking (VLSM). This allows it to define prefixes of arbitrary lengths making it much more efficient than the old system. CIDR IP addresses are composed of two sets of numbers. The network address is written as a prefix, like you would see a normal IP address (e.g. 192.255.255.255). The second part is the suffix which indicates how many bits are in the entire address (e.g. /12). Putting it together, a CIDR IP address would look like the following:</p>
+<pre class=" language-none"><code class=" language-none">192.255.255.255/12</code></pre>
+<p>The network prefix is also specified as part of the IP address. This varies depending upon the number of bits required. Therefore, taking the example above, we can say that the first 12 bits are the network part of the address while the last 20 bits are for host addresses.</p>
+
+
+
+
+
+
+  
+
+
+
+
+
